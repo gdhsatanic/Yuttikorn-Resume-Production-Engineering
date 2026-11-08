@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yuttikorn Wuttiprapagit | Dynamic Executive Dashboard Resume</title>
+  <title>Yuttikorn Wuttiprapagit | AVP Production Engineering & Asset Reliability Dashboard</title>
   <!-- Google Fonts & Lucide Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -96,11 +96,10 @@
       gap: 28px;
     }
 
-    /* PHOTO CONTAINER DESIGN */
     .avatar-wrapper {
       position: relative;
-      width: 105px;
-      height: 125px;
+      width: 110px;
+      height: 130px;
       border-radius: var(--radius-md);
       background: linear-gradient(135deg, #1E293B, #0F172A);
       border: 2px solid var(--accent-blue);
@@ -147,8 +146,8 @@
     }
 
     .name-title p {
-      font-size: 1.1rem;
-      font-weight: 600;
+      font-size: 1.15rem;
+      font-weight: 700;
       color: var(--accent-blue);
       margin-top: 4px;
     }
@@ -156,7 +155,7 @@
     .contact-chips {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
       margin-top: 14px;
     }
 
@@ -200,11 +199,27 @@
       align-items: center;
       gap: 8px;
       transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
     }
 
     .btn-action:hover {
       transform: translateY(-2px);
       box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
+    }
+
+    /* EXECUTIVE SUMMARY BANNER */
+    .summary-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .summary-card b {
+      color: #FFFFFF;
     }
 
     /* KPI METRICS GRID */
@@ -244,7 +259,7 @@
     .kpi-card.purple .kpi-icon { background: rgba(139, 92, 246, 0.1); color: var(--accent-purple); }
 
     .kpi-number {
-      font-size: 1.8rem;
+      font-size: 1.75rem;
       font-weight: 800;
       font-family: 'JetBrains Mono', monospace;
       color: #FFFFFF;
@@ -253,7 +268,7 @@
 
     .kpi-label {
       font-size: 0.82rem;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.5px;
@@ -313,7 +328,7 @@
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
       padding: 20px;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
       transition: all 0.2s ease;
     }
 
@@ -325,15 +340,30 @@
     .case-header {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 12px;
+      align-items: center;
+      margin-bottom: 14px;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 10px;
+    }
+
+    .company-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .company-logo {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2px;
     }
 
     .company-tag {
       font-weight: 700;
-      font-size: 1rem;
+      font-size: 1.05rem;
       color: #FFFFFF;
     }
 
@@ -341,15 +371,17 @@
       font-size: 0.8rem;
       color: var(--accent-blue);
       background: rgba(56, 189, 248, 0.1);
-      padding: 3px 10px;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      padding: 4px 10px;
       border-radius: 999px;
-      font-weight: 500;
+      font-weight: 600;
     }
 
     .timeline-date {
       font-size: 0.8rem;
       color: var(--text-dim);
       font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
     }
 
     /* BEFORE / AFTER COMPARISON */
@@ -365,7 +397,8 @@
     }
 
     .compare-box {
-      font-size: 0.82rem;
+      font-size: 0.83rem;
+      color: var(--text-muted);
     }
 
     .compare-title {
@@ -395,6 +428,7 @@
       color: var(--text-muted);
       position: relative;
       padding-left: 20px;
+      line-height: 1.5;
     }
 
     .bullet-list li::before {
@@ -412,7 +446,7 @@
 
     /* BADGES & CREDENTIALS */
     .skill-group {
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
 
     .skill-group-title {
@@ -464,7 +498,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 10px;
+      padding: 10px 12px;
       background: rgba(255, 255, 255, 0.02);
       border-radius: var(--radius-sm);
       border: 1px solid var(--border-subtle);
@@ -473,6 +507,8 @@
 
     .cert-icon {
       color: var(--accent-amber);
+      display: flex;
+      align-items: center;
     }
 
     .cert-text h4 {
@@ -493,7 +529,7 @@
         color: #000000 !important;
         padding: 0 !important;
       }
-      .header-card, .panel, .kpi-card, .case-card {
+      .header-card, .panel, .kpi-card, .case-card, .summary-card {
         background: #FFFFFF !important;
         border: 1px solid #CBD5E1 !important;
         color: #000000 !important;
@@ -521,20 +557,20 @@
     <div class="header-content">
       <div class="profile-group">
         
-        <!-- รูปภาพส่วนตัวของคุณ (หากไฟล์ชื่อ profile.jpg อยู่ข้างๆ จะแสดงทันที) -->
+        <!-- รูปภาพส่วนตัว (ใส่ไฟล์ชื่อ profile.png หรือ profile.jpg ไว้ในโฟลเดอร์เดียวกัน) -->
         <div class="avatar-wrapper">
-          <img src="profile.jpg" alt="Yuttikorn Wuttiprapagit" class="avatar-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=250';">
+          <img src="profile.png" alt="Yuttikorn Wuttiprapagit" class="avatar-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=250';">
         </div>
 
         <div class="name-title">
           <h1>
-            Yuttikorn Wuttiprapagit
+            YUTTIKORN WUTTIPRAPAGIT
             <span class="badge-verified"><i data-lucide="check-circle-2" style="width:14px;"></i> Verified Executive Profile</span>
           </h1>
-          <p>Process Optimization & Digital Transformation Specialist</p>
+          <p>AVP / Head of Production Engineering &amp; Asset Reliability</p>
           <div class="contact-chips">
             <span class="chip"><i data-lucide="map-pin" style="width:14px;"></i> Bangkok, Thailand</span>
-            <a href="tel:0819459514" class="chip"><i data-lucide="phone" style="width:14px;"></i> 081-945-9514</a>
+            <a href="tel:0819459514" class="chip"><i data-lucide="phone" style="width:14px;"></i> +66 81-945-9514</a>
             <a href="mailto:yuttikorn@gmail.com" class="chip"><i data-lucide="mail" style="width:14px;"></i> yuttikorn@gmail.com</a>
             <span class="chip"><i data-lucide="linkedin" style="width:14px;"></i> Yuttikorn Wuttiprapagit</span>
           </div>
@@ -548,14 +584,37 @@
     </div>
   </header>
 
+  <!-- EXECUTIVE SUMMARY BANNER -->
+  <section class="summary-card">
+    Senior Engineering &amp; Asset Reliability Leader with <b>16+ years</b> bridging Lean manufacturing governance with advanced digital automation across multi-site operations. Demonstrated record of delivering <b>&gt;100M THB in CAPEX avoidance</b> and cutting <b>26+ FTEs</b> through asset lifecycle optimization, plant relayout, Total Productive Maintenance (TPM), and predictive engineering. Proven capability in governing multi-million-THB expansions, standardizing equipment reliability, and leading cross-functional teams.
+  </section>
+
   <!-- KEY IMPACT METRICS (DASHBOARD HIGHLIGHTS) -->
   <section class="kpi-grid">
     <div class="kpi-card emerald">
-      <div class="kpi-icon"><i data-lucide="trending-up"></i></div>
+      <div class="kpi-icon"><i data-lucide="shield-check"></i></div>
       <div>
-        <div class="kpi-number">&gt; 100M+ THB</div>
-        <div class="kpi-label">Total CAPEX Avoidance</div>
-        <div class="kpi-desc">NOK (24M) + JATCO (55M) + Autoliv (20M) via Line Balancing & Asset Mod</div>
+        <div class="kpi-number">&gt; 100M THB</div>
+        <div class="kpi-label">CAPEX Avoidance</div>
+        <div class="kpi-desc">NOK (24M) + JATCO (55M) + Autoliv (20M) via Line Balancing &amp; Asset Modification</div>
+      </div>
+    </div>
+
+    <div class="kpi-card amber">
+      <div class="kpi-icon"><i data-lucide="layers"></i></div>
+      <div>
+        <div class="kpi-number">248M THB</div>
+        <div class="kpi-label">Project Governance</div>
+        <div class="kpi-desc">ePOWER Gearbox line installation with 100% on-time milestone delivery during COVID</div>
+      </div>
+    </div>
+
+    <div class="kpi-card purple">
+      <div class="kpi-icon"><i data-lucide="cpu"></i></div>
+      <div>
+        <div class="kpi-number">400+ Staff</div>
+        <div class="kpi-label">TPM &amp; Reliability</div>
+        <div class="kpi-desc">Transformed visual boards to Real-Time Digital Boards &amp; established PM frameworks</div>
       </div>
     </div>
 
@@ -564,25 +623,7 @@
       <div>
         <div class="kpi-number">26 FTEs</div>
         <div class="kpi-label">Workload Elimination</div>
-        <div class="kpi-desc">16 FTEs (Back-office Automation) + 10 FTEs (Cash Center Relayout, 0.5-Yr ROI)</div>
-      </div>
-    </div>
-
-    <div class="kpi-card amber">
-      <div class="kpi-icon"><i data-lucide="layers"></i></div>
-      <div>
-        <div class="kpi-number">248M THB</div>
-        <div class="kpi-label">Mega Project Budget</div>
-        <div class="kpi-desc">ePOWER Gearbox Launch with 100% on-time milestone delivery during COVID</div>
-      </div>
-    </div>
-
-    <div class="kpi-card purple">
-      <div class="kpi-icon"><i data-lucide="activity"></i></div>
-      <div>
-        <div class="kpi-number">400+ Staff</div>
-        <div class="kpi-label">Shop-floor Leadership</div>
-        <div class="kpi-desc">Directed production & converted Visual Boards to Real-Time Digital Boards</div>
+        <div class="kpi-desc">16 FTEs (Zero-CAPEX In-House Automation) + 10 FTEs (Cash Center Relayout, 0.5-Yr ROI)</div>
       </div>
     </div>
   </section>
@@ -596,99 +637,80 @@
         <div class="panel-header">
           <div class="panel-title">
             <i data-lucide="briefcase" style="color:var(--accent-blue)"></i>
-            Flagship Transformations & Case Studies
+            Flagship Engineering &amp; Operational Case Studies
           </div>
-          <span style="font-size:0.8rem; color:var(--text-dim); font-family:'JetBrains Mono'">15+ Years Track Record</span>
+          <span style="font-size:0.8rem; color:var(--text-dim); font-family:'JetBrains Mono'">16+ Years Experience</span>
         </div>
 
-     <!-- KBank -->
-<article class="case-card">
-  <div class="case-header">
-    <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-      
-      <!-- โลโก้บริษัท KBank -->
-      <div class="company-brand" style="display: inline-flex; align-items: center; gap: 8px;">
-        <img src="logo-kbank.png" alt="KASIKORN Bank Logo" style="width: 100px; height: 100px; object-fit: contain; border-radius: 4px; vertical-align: middle;">
-        <span class="company-tag">KASIKORN Bank</span>
-      </div>
-
-      <span class="role-badge">Service Fulfillment Development Specialist</span>
-    </div>
-    <span class="timeline-date">2024 – Present</span>
-  </div>
-  
-  <ul class="bullet-list">
-    <li><b>Zero-CAPEX In-House Automation:</b> Eliminated manual back-office tasks and data reconciliation using Power Automate, RPA, AI Copilot, Power Query, VBA, and dynamic formulas — <b>saving 16 FTEs</b>.</li>
-    <li><b>Cash Center Facility Relayout:</b> Redesigned operational layouts and physical routing, boosting productivity by 5% and saving <b>10 FTEs with full ROI within 0.5 years</b>.</li>
-    <li><b>Forecasting & Reconciliation Checker:</b> Engineered dynamic cash demand forecasting models to optimize procurement and cut holding costs while installing automated Data Reconcile Process Checkers.</li>
-  </ul>
-</article>
+        <!-- KBank -->
+        <article class="case-card">
+          <div class="case-header">
+            <div class="company-brand">
+              <img src="logo-kbank.png" alt="KASIKORN Bank Logo" class="company-logo" onerror="this.style.display='none'">
+              <span class="company-tag">KASIKORN Bank</span>
+            </div>
+            <span class="role-badge">Service Fulfillment Development Specialist</span>
+            <span class="timeline-date">2024 – Present</span>
+          </div>
+          <ul class="bullet-list">
+            <li><b>Facility Redesign &amp; Optimization:</b> Re-engineered operations and physical layouts for high-throughput Cash Centers, lifting productivity by 5% and saving <b>10 FTEs with a rapid 0.5-year ROI</b>.</li>
+            <li><b>Zero-CAPEX Process Governance:</b> Automated data reconciliation, verification engines, and dynamic forecasting models using Power Automate, RPA, AI Copilot, Power Query, and VBA, saving <b>16 FTEs</b> with Zero CAPEX.</li>
+          </ul>
+        </article>
 
         <!-- Autoliv -->
         <article class="case-card">
           <div class="case-header">
-            <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-              
-              <!-- โลโก้ Autoliv -->
-              <div class="company-brand" style="display: inline-flex; align-items: center; gap: 8px;">
-                <img src="logo-autoliv.png" alt="Autoliv Thailand Logo" style="width: 100px; height: 100px; object-fit: contain; border-radius: 4px; vertical-align: middle;">
-                <span class="company-tag">Autoliv Thailand</span>
-              </div>
-
-              <span class="role-badge">Process Improvement Manager</span>
+            <div class="company-brand">
+              <img src="logo-autoliv.png" alt="Autoliv Thailand Logo" class="company-logo" onerror="this.style.display='none'">
+              <span class="company-tag">Autoliv Thailand</span>
             </div>
+            <span class="role-badge">Process Improvement Manager</span>
             <span class="timeline-date">2022 – 2023</span>
           </div>
-          <p style="font-size:0.88rem; color:var(--text-muted); margin-top:4px;">
-            Managed daily operations for <b>400+ personnel</b> (meeting strict SQDCM metrics) and achieved a 4% overall productivity surge.
+          <p style="font-size:0.88rem; color:var(--text-muted); margin-top:2px;">
+            Directed shop-floor operations for <b>400+ personnel</b>, consistently achieving SQDCM metrics and lifting line productivity by 4%.
           </p>
           <div class="compare-container">
             <div class="compare-box">
-              <div class="compare-title before"><i data-lucide="alert-triangle" style="width:14px;"></i> Challenge / Before</div>
-              New customer model arrived but factory floor was full. Expanding building structure would require heavy CAPEX &amp; utility modifications.
+              <div class="compare-title before"><i data-lucide="alert-triangle" style="width:14px;"></i> Challenge / Bottleneck</div>
+              New customer model arrived but floor was full. Expanding physical building required heavy CAPEX and extensive utility modifications.
             </div>
             <div class="compare-box">
-              <div class="compare-title after"><i data-lucide="check-circle" style="width:14px;"></i> Innovation / Result</div>
-              Re-engineered plant layout via 7 Wastes and unified internal logistics (E-Cart routes A/B/C + E-Kanban) — <b>avoided &gt; 20M THB factory expansion</b>.
+              <div class="compare-title after"><i data-lucide="check-circle" style="width:14px;"></i> Engineering Solution</div>
+              Re-engineered plant layout via 7 Wastes and unified internal logistics (E-Cart routes A/B/C + E-Kanban) — <b>avoided &gt; 20M THB in facility expansion</b>.
             </div>
           </div>
+          <ul class="bullet-list" style="margin-top: 12px;">
+            <li><b>Digital TPM Transformation:</b> Spearheaded the digital shift by digitizing TPM inspection standards and launching Real-Time Digital Boards for hour-by-hour operational tracking.</li>
+          </ul>
         </article>
 
         <!-- JATCO -->
         <article class="case-card">
           <div class="case-header">
-            <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-              
-              <!-- โลโก้ JATCO -->
-              <div class="company-brand" style="display: inline-flex; align-items: center; gap: 8px;">
-                <img src="logo-jatco.png" alt="JATCO Thailand Logo" style="width: 70px; height: 70px; object-fit: contain; border-radius: 4px; vertical-align: middle;">
-                <span class="company-tag">JATCO Thailand</span>
-              </div>
-
-              <span class="role-badge">Project Leader (ePOWER Project)</span>
+            <div class="company-brand">
+              <img src="logo-jatco.png" alt="JATCO Thailand Logo" class="company-logo" onerror="this.style.display='none'">
+              <span class="company-tag">JATCO Thailand</span>
             </div>
+            <span class="role-badge">Project Leader &amp; Senior Process Engineer</span>
             <span class="timeline-date">2012 – 2021</span>
           </div>
           <ul class="bullet-list">
-            <li><b>Machine Re-tooling (>55M THB Avoided):</b> Accelerated cycle times to boost machine utilization; modified surplus machinery for model changeover to ePOWER, eliminating the need for brand-new lines.</li>
-            <li><b>248M THB Mega-Project Governance:</b> Governed end-to-end CAPEX/OPEX budget, procurement, and line commissioning with 100% milestone accuracy despite COVID-19.</li>
-            <li><b>Root-Cause Engineering:</b> Solved stubborn assembly bottlenecks using Design of Experiments (DOE), FTA, and ROAM risk governance matrices.</li>
+            <li><b>Asset Re-Tooling (&gt;55M THB Saved):</b> Optimized machining cycle times to raise asset utilization; modified surplus machinery for model changeovers to ePOWER, eliminating the need for new lines.</li>
+            <li><b>248M THB Capex/Opex Governance:</b> Governed full project lifecycle from technical specifications and equipment procurement to installation and line commissioning with 100% on-time milestone delivery.</li>
+            <li><b>Reliability &amp; Root-Cause Engineering:</b> Applied Lean Six Sigma (DMAIC), Design of Experiments (DOE), Fault Tree Analysis (FTA), and ROAM risk governance to eliminate chronic equipment breakdowns.</li>
           </ul>
         </article>
 
         <!-- Thai NOK -->
         <article class="case-card">
           <div class="case-header">
-            <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-              
-              <!-- โลโก้ Thai NOK -->
-              <div class="company-brand" style="display: inline-flex; align-items: center; gap: 8px;">
-                <img src="logo-nok.png" alt="Thai NOK Logo" style="width: 50px; height: 50px; object-fit: contain; border-radius: 4px; vertical-align: middle;">
-                <span class="company-tag">Thai NOK</span>
-              </div>
-
-              <span class="role-badge">Process Engineer</span>
+            <div class="company-brand">
+              <img src="logo-nok.png" alt="Thai NOK Logo" class="company-logo" onerror="this.style.display='none'">
+              <span class="company-tag">Thai NOK</span>
             </div>
+            <span class="role-badge">Process Engineer</span>
             <span class="timeline-date">2008 – 2012</span>
           </div>
           <div class="compare-container">
@@ -712,7 +734,22 @@
       <!-- Tech Stack Badges -->
       <div class="panel">
         <div class="panel-header">
-          <div class="panel-title"><i data-lucide="terminal" style="color:var(--accent-blue)"></i> Technical Stack</div>
+          <div class="panel-title"><i data-lucide="terminal" style="color:var(--accent-blue)"></i> Core Competencies</div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title"><i data-lucide="factory" style="width:14px;"></i> Engineering &amp; Reliability</div>
+          <div class="badge-cloud">
+            <span class="tech-badge highlight">Preventive/Predictive Maintenance</span>
+            <span class="tech-badge highlight">Total Productive Maintenance (TPM)</span>
+            <span class="tech-badge highlight">Asset Lifecycle Management</span>
+            <span class="tech-badge">Equipment Commissioning</span>
+            <span class="tech-badge">Root Cause Analysis (DOE/FTA)</span>
+            <span class="tech-badge">Plant Relayout</span>
+            <span class="tech-badge">Line Balancing</span>
+            <span class="tech-badge">7 Wastes Elimination</span>
+            <span class="tech-badge">AutoCAD</span>
+          </div>
         </div>
 
         <div class="skill-group">
@@ -720,37 +757,24 @@
           <div class="badge-cloud">
             <span class="tech-badge highlight">MS Power Automate</span>
             <span class="tech-badge highlight">AI Copilot</span>
-            <span class="tech-badge highlight">RPA (Nintex)</span>
+            <span class="tech-badge highlight">RPA (Nintex Expert)</span>
             <span class="tech-badge">Power Query</span>
             <span class="tech-badge">Power Pivot</span>
             <span class="tech-badge">VBA / Macros</span>
-            <span class="tech-badge">OCR Integration</span>
-            <span class="tech-badge">Dynamic Formulas</span>
-          </div>
-        </div>
-
-        <div class="skill-group">
-          <div class="skill-group-title"><i data-lucide="factory" style="width:14px;"></i> Industrial &amp; Lean</div>
-          <div class="badge-cloud">
-            <span class="tech-badge highlight">7 Wastes Elimination</span>
-            <span class="tech-badge highlight">Plant Relayout</span>
-            <span class="tech-badge highlight">Line Balancing</span>
-            <span class="tech-badge">Standard Work</span>
-            <span class="tech-badge">Poka-Yoke</span>
-            <span class="tech-badge">E-Cart &amp; E-Kanban</span>
-            <span class="tech-badge">DOE &amp; FTA</span>
-            <span class="tech-badge">TPM Digitalization</span>
+            <span class="tech-badge">Python Basics</span>
+            <span class="tech-badge">Real-Time Dashboards</span>
           </div>
         </div>
 
         <div class="skill-group" style="margin-bottom:0;">
           <div class="skill-group-title"><i data-lucide="clipboard-check" style="width:14px;"></i> Governance &amp; PM</div>
           <div class="badge-cloud">
+            <span class="tech-badge highlight">CAPEX/OPEX Budgeting</span>
             <span class="tech-badge">PMP Framework</span>
-            <span class="tech-badge">CAPEX/OPEX Planning</span>
             <span class="tech-badge">ROAM Risk Matrix</span>
-            <span class="tech-badge">RACI Matrix</span>
+            <span class="tech-badge">RACI Governance</span>
             <span class="tech-badge">SQDCM KPIs</span>
+            <span class="tech-badge">Contractor Management</span>
           </div>
         </div>
       </div>
@@ -758,7 +782,7 @@
       <!-- Education & Licenses -->
       <div class="panel">
         <div class="panel-header">
-          <div class="panel-title"><i data-lucide="award" style="color:var(--accent-amber)"></i> Credentials</div>
+          <div class="panel-title"><i data-lucide="award" style="color:var(--accent-amber)"></i> Credentials &amp; Education</div>
         </div>
 
         <div class="cert-item">
@@ -773,7 +797,7 @@
           <div class="cert-icon"><i data-lucide="shield-check"></i></div>
           <div class="cert-text">
             <h4>Professional Engineering License</h4>
-            <p>Associate Mechanical Engineer</p>
+            <p>Associate Mechanical Engineer (กว. เครื่องกล)</p>
           </div>
         </div>
 
@@ -798,6 +822,14 @@
           <div class="cert-text">
             <h4>Google Project Management</h4>
             <p>Professional Certificate by Coursera</p>
+          </div>
+        </div>
+
+        <div class="cert-item">
+          <div class="cert-icon"><i data-lucide="check-circle-2"></i></div>
+          <div class="cert-text">
+            <h4>Leadership: Be Ready to Lead</h4>
+            <p>Executive Leadership Training</p>
           </div>
         </div>
 
