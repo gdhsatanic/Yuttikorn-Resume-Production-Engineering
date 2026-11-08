@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yuttikorn Wuttiprapagit | Dynamic Executive Dashboard Resume</title>
+  <!-- Google Fonts & Lucide Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --bg-base: #0B0F19;
+      --bg-surface: #111827;
+      --bg-card: #1F2937;
+      --border-subtle: #374151;
+      --border-glow: #1E3A8A;
+      
+      --text-main: #F9FAFB;
+      --text-muted: #9CA3AF;
+      --text-dim: #6B7280;
+      
+      --accent-blue: #38BDF8;
+      --accent-navy: #1D4ED8;
+      --accent-emerald: #10B981;
+      --accent-amber: #F59E0B;
+      --accent-purple: #8B5CF6;
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 24px;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.08) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(29, 78, 216, 0.12) 0px, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* TOP BAR / HEADER */
+    .header-card {
+      background: linear-gradient(135deg, rgba(31, 41, 55, 0.9) 0%, rgba(17, 24, 39, 0.95) 100%);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-emerald), var(--accent-purple));
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .profile-group {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    /* PHOTO CONTAINER DESIGN */
+    .avatar-wrapper {
+      position: relative;
+      width: 105px;
+      height: 125px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, #1E293B, #0F172A);
+      border: 2px solid var(--accent-blue);
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .avatar-wrapper:hover .avatar-img {
+      transform: scale(1.05);
+    }
+
+    .name-title h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .badge-verified {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid var(--accent-emerald);
+      color: var(--accent-emerald);
+      border-radius: 999px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .name-title p {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--accent-blue);
+      margin-top: 4px;
+    }
+
+    .contact-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .chip:hover {
+      color: #FFFFFF;
+      background: rgba(56, 189, 248, 0.15);
+      border-color: var(--accent-blue);
+    }
+
+    .header-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-end;
+    }
+
+    .btn-action {
+      background: linear-gradient(135deg, var(--accent-navy), var(--accent-blue));
+      color: #FFFFFF;
+      border: none;
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-action:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
+    }
+
+    /* KPI METRICS GRID */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .kpi-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      position: relative;
+      transition: all 0.25s ease;
+    }
+
+    .kpi-card:hover {
+      border-color: var(--accent-blue);
+      transform: translateY(-3px);
+      background: #172033;
+    }
+
+    .kpi-icon {
+      padding: 12px;
+      border-radius: var(--radius-sm);
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent-blue);
+    }
+
+    .kpi-card.emerald .kpi-icon { background: rgba(16, 185, 129, 0.1); color: var(--accent-emerald); }
+    .kpi-card.amber .kpi-icon { background: rgba(245, 158, 11, 0.1); color: var(--accent-amber); }
+    .kpi-card.purple .kpi-icon { background: rgba(139, 92, 246, 0.1); color: var(--accent-purple); }
+
+    .kpi-number {
+      font-size: 1.8rem;
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+      color: #FFFFFF;
+      letter-spacing: -1px;
+    }
+
+    .kpi-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 2px;
+    }
+
+    .kpi-desc {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-top: 6px;
+    }
+
+    /* TWO COLUMN LAYOUT */
+    .main-layout {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 992px) {
+      .main-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* CONTENT PANELS */
+    .panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-card);
+      margin-bottom: 24px;
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 14px;
+    }
+
+    .panel-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* CASE STUDY CARDS */
+    .case-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin-bottom: 16px;
+      transition: all 0.2s ease;
+    }
+
+    .case-card:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .case-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .company-tag {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #FFFFFF;
+    }
+
+    .role-badge {
+      font-size: 0.8rem;
+      color: var(--accent-blue);
+      background: rgba(56, 189, 248, 0.1);
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-weight: 500;
+    }
+
+    .timeline-date {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* BEFORE / AFTER COMPARISON */
+    .compare-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      background: #0E1420;
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      margin-top: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .compare-box {
+      font-size: 0.82rem;
+    }
+
+    .compare-title {
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .compare-title.before { color: #EF4444; }
+    .compare-title.after { color: var(--accent-emerald); }
+
+    .bullet-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .bullet-list li {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .bullet-list li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--accent-blue);
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+
+    .bullet-list li b {
+      color: #FFFFFF;
+    }
+
+    /* BADGES & CREDENTIALS */
+    .skill-group {
+      margin-bottom: 20px;
+    }
+
+    .skill-group-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .badge-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tech-badge {
+      background: #1A2234;
+      color: #E2E8F0;
+      border: 1px solid #2D3748;
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .tech-badge:hover {
+      border-color: var(--accent-blue);
+      color: var(--accent-blue);
+      background: #1E293B;
+    }
+
+    .tech-badge.highlight {
+      border-color: rgba(56, 189, 248, 0.4);
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent-blue);
+      font-weight: 600;
+    }
+
+    .cert-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 10px;
+    }
+
+    .cert-icon {
+      color: var(--accent-amber);
+    }
+
+    .cert-text h4 {
+      font-size: 0.85rem;
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+
+    .cert-text p {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+
+    /* PRINT STYLES */
+    @media print {
+      body {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+        padding: 0 !important;
+      }
+      .header-card, .panel, .kpi-card, .case-card {
+        background: #FFFFFF !important;
+        border: 1px solid #CBD5E1 !important;
+        color: #000000 !important;
+        box-shadow: none !important;
+      }
+      .btn-action, .contact-chips {
+        display: none !important;
+      }
+      .name-title h1, .kpi-number, .company-tag {
+        color: #0F172A !important;
+      }
+      .avatar-wrapper {
+        border-color: #94A3B8 !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER WITH PHOTO -->
+  <header class="header-card">
+    <div class="header-content">
+      <div class="profile-group">
+        
+        <!-- รูปภาพส่วนตัวของคุณ (หากไฟล์ชื่อ profile.jpg อยู่ข้างๆ จะแสดงทันที) -->
+        <div class="avatar-wrapper">
+          <img src="profile.jpg" alt="Yuttikorn Wuttiprapagit" class="avatar-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=250';">
+        </div>
+
+        <div class="name-title">
+          <h1>
+            Yuttikorn Wuttiprapagit
+            <span class="badge-verified"><i data-lucide="check-circle-2" style="width:14px;"></i> Verified Executive Profile</span>
+          </h1>
+          <p>Process Optimization & Digital Transformation Specialist</p>
+          <div class="contact-chips">
+            <span class="chip"><i data-lucide="map-pin" style="width:14px;"></i> Bangkok, Thailand</span>
+            <a href="tel:0819459514" class="chip"><i data-lucide="phone" style="width:14px;"></i> 081-945-9514</a>
+            <a href="mailto:yuttikorn@gmail.com" class="chip"><i data-lucide="mail" style="width:14px;"></i> yuttikorn@gmail.com</a>
+            <span class="chip"><i data-lucide="linkedin" style="width:14px;"></i> Yuttikorn Wuttiprapagit</span>
+          </div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="btn-action" onclick="window.print()">
+          <i data-lucide="printer" style="width:16px;"></i> Print / Save as PDF
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- KEY IMPACT METRICS (DASHBOARD HIGHLIGHTS) -->
+  <section class="kpi-grid">
+    <div class="kpi-card emerald">
+      <div class="kpi-icon"><i data-lucide="trending-up"></i></div>
+      <div>
+        <div class="kpi-number">&gt; 100M+ THB</div>
+        <div class="kpi-label">Total CAPEX Avoidance</div>
+        <div class="kpi-desc">NOK (24M) + JATCO (55M) + Autoliv (20M) via Line Balancing & Asset Mod</div>
+      </div>
+    </div>
+
+    <div class="kpi-card">
+      <div class="kpi-icon"><i data-lucide="users"></i></div>
+      <div>
+        <div class="kpi-number">26 FTEs</div>
+        <div class="kpi-label">Workload Elimination</div>
+        <div class="kpi-desc">16 FTEs (Back-office Automation) + 10 FTEs (Cash Center Relayout, 0.5-Yr ROI)</div>
+      </div>
+    </div>
+
+    <div class="kpi-card amber">
+      <div class="kpi-icon"><i data-lucide="layers"></i></div>
+      <div>
+        <div class="kpi-number">248M THB</div>
+        <div class="kpi-label">Mega Project Budget</div>
+        <div class="kpi-desc">ePOWER Gearbox Launch with 100% on-time milestone delivery during COVID</div>
+      </div>
+    </div>
+
+    <div class="kpi-card purple">
+      <div class="kpi-icon"><i data-lucide="activity"></i></div>
+      <div>
+        <div class="kpi-number">400+ Staff</div>
+        <div class="kpi-label">Shop-floor Leadership</div>
+        <div class="kpi-desc">Directed production & converted Visual Boards to Real-Time Digital Boards</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN TWO-COLUMN WORKSPACE -->
+  <div class="main-layout">
+    
+    <!-- LEFT: DETAILED CASE STUDIES & TIMELINE -->
+    <main>
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title">
+            <i data-lucide="briefcase" style="color:var(--accent-blue)"></i>
+            Flagship Transformations & Case Studies
+          </div>
+          <span style="font-size:0.8rem; color:var(--text-dim); font-family:'JetBrains Mono'">15+ Years Track Record</span>
+        </div>
+
+     <!-- KBank -->
+<article class="case-card">
+  <div class="case-header">
+    <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+      
+      <!-- โลโก้บริษัท KBank -->
+      <div class="company-brand" style="display: inline-flex; align-items: center; gap: 8px;">
+        <img src="logo-kbank.png" alt="KASIKORN Bank Logo" style="width: 100px; height: 100px; object-fit: contain; border-radius: 4px; vertical-align: middle;">
+        <span class="company-tag">KASIKORN Bank</span>
+      </div>
+
+      <span class="role-badge">Service Fulfillment Development Specialist</span>
+    </div>
+    <span class="timeline-date">2024 – Present</span>
+  </div>
+  
+  <ul class="bullet-list">
+    <li><b>Zero-CAPEX In-House Automation:</b> Eliminated manual back-office tasks and data reconciliation using Power Automate, RPA, AI Copilot, Power Query, VBA, and dynamic formulas — <b>saving 16 FTEs</b>.</li>
+    <li><b>Cash Center Facility Relayout:</b> Redesigned operational layouts and physical routing, boosting productivity by 5% and saving <b>10 FTEs with full ROI within 0.5 years</b>.</li>
+    <li><b>Forecasting & Reconciliation Checker:</b> Engineered dynamic cash demand forecasting models to optimize procurement and cut holding costs while installing automated Data Reconcile Process Checkers.</li>
+  </ul>
+</article>
+
+        <!-- Autoliv -->
+        <article class="case-card">
+          <div class="case-header">
+            <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+              
+              <!-- โลโก้ Autoliv -->
+              <div class="company-brand" style="display: inline-flex; align-items: center; gap: 8px;">
+                <img src="logo-autoliv.png" alt="Autoliv Thailand Logo" style="width: 100px; height: 100px; object-fit: contain; border-radius: 4px; vertical-align: middle;">
+                <span class="company-tag">Autoliv Thailand</span>
+              </div>
+
+              <span class="role-badge">Process Improvement Manager</span>
+            </div>
+            <span class="timeline-date">2022 – 2023</span>
+          </div>
+          <p style="font-size:0.88rem; color:var(--text-muted); margin-top:4px;">
+            Managed daily operations for <b>400+ personnel</b> (meeting strict SQDCM metrics) and achieved a 4% overall productivity surge.
+          </p>
+          <div class="compare-container">
+            <div class="compare-box">
+              <div class="compare-title before"><i data-lucide="alert-triangle" style="width:14px;"></i> Challenge / Before</div>
+              New customer model arrived but factory floor was full. Expanding building structure would require heavy CAPEX &amp; utility modifications.
+            </div>
+            <div class="compare-box">
+              <div class="compare-title after"><i data-lucide="check-circle" style="width:14px;"></i> Innovation / Result</div>
+              Re-engineered plant layout via 7 Wastes and unified internal logistics (E-Cart routes A/B/C + E-Kanban) — <b>avoided &gt; 20M THB factory expansion</b>.
+            </div>
+          </div>
+        </article>
+
+        <!-- JATCO -->
+        <article class="case-card">
+          <div class="case-header">
+            <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+              
+              <!-- โลโก้ JATCO -->
+              <div class="company-brand" style="display: inline-flex; align-items: center; gap: 8px;">
+                <img src="logo-jatco.png" alt="JATCO Thailand Logo" style="width: 70px; height: 70px; object-fit: contain; border-radius: 4px; vertical-align: middle;">
+                <span class="company-tag">JATCO Thailand</span>
+              </div>
+
+              <span class="role-badge">Project Leader (ePOWER Project)</span>
+            </div>
+            <span class="timeline-date">2012 – 2021</span>
+          </div>
+          <ul class="bullet-list">
+            <li><b>Machine Re-tooling (>55M THB Avoided):</b> Accelerated cycle times to boost machine utilization; modified surplus machinery for model changeover to ePOWER, eliminating the need for brand-new lines.</li>
+            <li><b>248M THB Mega-Project Governance:</b> Governed end-to-end CAPEX/OPEX budget, procurement, and line commissioning with 100% milestone accuracy despite COVID-19.</li>
+            <li><b>Root-Cause Engineering:</b> Solved stubborn assembly bottlenecks using Design of Experiments (DOE), FTA, and ROAM risk governance matrices.</li>
+          </ul>
+        </article>
+
+        <!-- Thai NOK -->
+        <article class="case-card">
+          <div class="case-header">
+            <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+              
+              <!-- โลโก้ Thai NOK -->
+              <div class="company-brand" style="display: inline-flex; align-items: center; gap: 8px;">
+                <img src="logo-nok.png" alt="Thai NOK Logo" style="width: 50px; height: 50px; object-fit: contain; border-radius: 4px; vertical-align: middle;">
+                <span class="company-tag">Thai NOK</span>
+              </div>
+
+              <span class="role-badge">Process Engineer</span>
+            </div>
+            <span class="timeline-date">2008 – 2012</span>
+          </div>
+          <div class="compare-container">
+            <div class="compare-box">
+              <div class="compare-title before"><i data-lucide="clock" style="width:14px;"></i> Bottleneck (Standard Tooling)</div>
+              Station 10–20 bottleneck at 65s C/T with operator waiting time of <b>29 seconds</b>. New high-volume model required buying a new machine.
+            </div>
+            <div class="compare-box">
+              <div class="compare-title after"><i data-lucide="zap" style="width:14px;"></i> Solution (Special Tooling)</div>
+              Replaced with custom Special Tooling, reducing waiting time to <b>2 seconds</b> (91s total C/T) — <b>saved 24M THB machine purchase and 1 headcount</b>.
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </main>
+
+    <!-- RIGHT: CAPABILITIES, CREDENTIALS & TECH STACK -->
+    <aside>
+      
+      <!-- Tech Stack Badges -->
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title"><i data-lucide="terminal" style="color:var(--accent-blue)"></i> Technical Stack</div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title"><i data-lucide="cpu" style="width:14px;"></i> Digital &amp; Automation</div>
+          <div class="badge-cloud">
+            <span class="tech-badge highlight">MS Power Automate</span>
+            <span class="tech-badge highlight">AI Copilot</span>
+            <span class="tech-badge highlight">RPA (Nintex)</span>
+            <span class="tech-badge">Power Query</span>
+            <span class="tech-badge">Power Pivot</span>
+            <span class="tech-badge">VBA / Macros</span>
+            <span class="tech-badge">OCR Integration</span>
+            <span class="tech-badge">Dynamic Formulas</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title"><i data-lucide="factory" style="width:14px;"></i> Industrial &amp; Lean</div>
+          <div class="badge-cloud">
+            <span class="tech-badge highlight">7 Wastes Elimination</span>
+            <span class="tech-badge highlight">Plant Relayout</span>
+            <span class="tech-badge highlight">Line Balancing</span>
+            <span class="tech-badge">Standard Work</span>
+            <span class="tech-badge">Poka-Yoke</span>
+            <span class="tech-badge">E-Cart &amp; E-Kanban</span>
+            <span class="tech-badge">DOE &amp; FTA</span>
+            <span class="tech-badge">TPM Digitalization</span>
+          </div>
+        </div>
+
+        <div class="skill-group" style="margin-bottom:0;">
+          <div class="skill-group-title"><i data-lucide="clipboard-check" style="width:14px;"></i> Governance &amp; PM</div>
+          <div class="badge-cloud">
+            <span class="tech-badge">PMP Framework</span>
+            <span class="tech-badge">CAPEX/OPEX Planning</span>
+            <span class="tech-badge">ROAM Risk Matrix</span>
+            <span class="tech-badge">RACI Matrix</span>
+            <span class="tech-badge">SQDCM KPIs</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Education & Licenses -->
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title"><i data-lucide="award" style="color:var(--accent-amber)"></i> Credentials</div>
+        </div>
+
+        <div class="cert-item">
+          <div class="cert-icon"><i data-lucide="graduation-cap"></i></div>
+          <div class="cert-text">
+            <h4>B.Eng. Mechanical Engineering</h4>
+            <p>Mahidol University (2005 – 2008)</p>
+          </div>
+        </div>
+
+        <div class="cert-item">
+          <div class="cert-icon"><i data-lucide="shield-check"></i></div>
+          <div class="cert-text">
+            <h4>Professional Engineering License</h4>
+            <p>Associate Mechanical Engineer</p>
+          </div>
+        </div>
+
+        <div class="cert-item">
+          <div class="cert-icon"><i data-lucide="check-circle-2"></i></div>
+          <div class="cert-text">
+            <h4>Lean Six Sigma Green Belt</h4>
+            <p>Certified Continuous Improvement</p>
+          </div>
+        </div>
+
+        <div class="cert-item">
+          <div class="cert-icon"><i data-lucide="check-circle-2"></i></div>
+          <div class="cert-text">
+            <h4>RPA Certified Expert</h4>
+            <p>Nintex University</p>
+          </div>
+        </div>
+
+        <div class="cert-item">
+          <div class="cert-icon"><i data-lucide="check-circle-2"></i></div>
+          <div class="cert-text">
+            <h4>Google Project Management</h4>
+            <p>Professional Certificate by Coursera</p>
+          </div>
+        </div>
+
+      </div>
+
+    </aside>
+
+  </div>
+
+</div>
+
+<!-- Initialize Lucide Icons -->
+<script>
+  lucide.createIcons();
+</script>
+</body>
+</html>
